@@ -1,0 +1,16 @@
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\bin\Debug\campo_minado.exe.config
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\bin\Debug\campo_minado.exe
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\bin\Debug\campo_minado.pdb
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\obj\Debug\campo_minado.csprojResolveAssemblyReference.cache
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\obj\Debug\campo_minado.MainForm.resources
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\obj\Debug\campo_minado.csproj.GenerateResource.Cache
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\obj\Debug\campo_minado.exe
+C:\Users\fabri\OneDrive\Documentos\Programação\Projetos - C#\campo_minado\campo_minado\obj\Debug\campo_minado.pdb
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\bin\Debug\campo_minado.exe.config
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\bin\Debug\campo_minado.exe
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\bin\Debug\campo_minado.pdb
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\obj\Debug\campo_minado.csprojResolveAssemblyReference.cache
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\obj\Debug\campo_minado.MainForm.resources
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\obj\Debug\campo_minado.csproj.GenerateResource.Cache
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\obj\Debug\campo_minado.exe
+U:\Projetos Aleatórios\C#\campo_minado\campo_minado\obj\Debug\campo_minado.pdb
