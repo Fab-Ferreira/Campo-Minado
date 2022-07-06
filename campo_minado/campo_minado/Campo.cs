@@ -19,7 +19,7 @@ namespace campo_minado
 		public string[] campos, numero;
 		public string campoN, campoNE, campoE, campoSE, campoS, campoSW, campoW, campoNW;
 		
-		//Variável boolean
+		//Variáveis boolean
 		public bool marcado, repetido;
 		
 		//Vetores Label e instanciamento de Random
@@ -48,13 +48,11 @@ namespace campo_minado
 					quantCampos[quantidade].ForeColor = Color.Silver; //Definir cor da fonte para Prata
 					quantCampos[quantidade].TextAlign = ContentAlignment.MiddleCenter; //Definir o alinhamento do texto
 					quantCampos[quantidade].MouseDown += Tentativa; //Método do MouseDown "Tentativa"
-					
 					quantCampos[quantidade].Font = new Font("Arial", 8F, FontStyle.Bold); //Definir a fonte
-					LocationX += 25;
-					
 					quantCampos[quantidade].Name = "campo" + quantidade; //Definir o nome
 					
 					quantidade += 1;
+					LocationX += 25;
 					
 				}
 				LocationX = (MainForm.ActiveForm.Width / 2) - (columns * 25) / 2;
@@ -82,7 +80,7 @@ namespace campo_minado
 			//Definir os campos que serão bombas
 			while(i < 20)
 			{
-				bombas[i] = rand.Next(0, 100); //Sortear aleatoriamente entre 0 à 399
+				bombas[i] = rand.Next(0, 100); //Sortear aleatoriamente entre 0 à 99
 				repetido = false;
 				
 				for(int rndm = 0; rndm < i; rndm++)
@@ -137,7 +135,7 @@ namespace campo_minado
 			//Definir os campos que serão bombas
 			while(i < 50)
 			{
-				bombas[i] = rand.Next(0, 225); //Sortear aleatoriamente entre 0 à 399
+				bombas[i] = rand.Next(0, 225); //Sortear aleatoriamente entre 0 à 224
 				repetido = false;
 				
 				for(int rndm = 0; rndm < i; rndm++)
@@ -423,10 +421,10 @@ namespace campo_minado
 				//Se clicar na bomba
 				if((sender as Label).Text == "Bomb")
 				{
-					//Para cada botão em "quantCampos"
+					//Para cada label em "quantCampos"
 					foreach(Label label in quantCampos)
 					{
-						//Se a legenda possuir o texto "Bomb"
+						//Se a Label possuir o texto "Bomb"
 						if(label.Text == "Bomb")
 						{
 							label.Text = "";
@@ -467,7 +465,7 @@ namespace campo_minado
 					
 					foreach(Label label in quantCampos)
 					{
-						//Se a legenda possuir o texto "Bomb"
+						//Se a Label possuir o texto "Bomb"
 						if(label.Text == "Bomb")
 						{
 							label.Text = "";
