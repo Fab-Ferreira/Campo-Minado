@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+//Código desenvolvido por Fabrício Prudente Ferreira (Fab Ferreira)
 namespace campo_minado
 {
 	public partial class MainForm : Form
