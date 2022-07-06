@@ -75,7 +75,7 @@ namespace campo_minado
 			//Criar um vetor de 100 legendas (10x10)
 			quantCampos = new Label[columns * lines];
 			
-			Caracteristica(painel); //Chamar a classe Caracteristica
+			Caracteristica(painel); //Chamar o método Caracteristica
 			
 			bombas = new int[20];
 			
@@ -130,7 +130,7 @@ namespace campo_minado
 			//Criar um vetor de 225 legendas (15x15)
 			quantCampos = new Label[columns * lines];
 			
-			Caracteristica(painel); //Chamar a classe Caracteristica
+			Caracteristica(painel); //Chamar o método Caracteristica
 			
 			bombas = new int[50];
 			
@@ -185,7 +185,7 @@ namespace campo_minado
 			//Criar um vetor de 400 legendas (20x20)
 			quantCampos = new Label[columns * lines];
 			
-			Caracteristica(painel); //Chamar a classe Caracteristica
+			Caracteristica(painel); //Chamar o método Caracteristica
 			
 			bombas = new int[100];
 			
