@@ -248,44 +248,14 @@ namespace campo_minado
 			numeracao = int.Parse(numero[1]);
 			
 			//Localizar todos os 8 campos ao redor do campo selecionado
-			switch(columns)
-			{
-				//Fácil
-				case 10:
-					numberNW = numeracao - 11; //Noroeste
-					numberN = numeracao - 10; //Norte
-					numberNE = numeracao - 9; //Nordeste
-					numberW = numeracao - 1; //Oeste
-					numberE = numeracao + 1; //Leste
-					numberSW = numeracao + 9; //Sudoeste
-					numberS = numeracao + 10; //Sul
-					numberSE = numeracao + 11; //Sudeste
-					break;
-				
-				//Médio
-				case 15:
-					numberNW = numeracao - 16; //Noroeste
-					numberN = numeracao - 15; //Norte
-					numberNE = numeracao - 14; //Nordeste
-					numberW = numeracao - 1; //Oeste
-					numberE = numeracao + 1; //Leste
-					numberSW = numeracao + 14; //Sudoeste
-					numberS = numeracao + 15; //Sul
-					numberSE = numeracao + 16; //Sudeste
-					break;
-				
-				//Difícil
-				case 20:
-					numberNW = numeracao - 21; //Noroeste
-					numberN = numeracao - 20; //Norte
-					numberNE = numeracao - 19; //Nordeste
-					numberW = numeracao - 1; //Oeste
-					numberE = numeracao + 1; //Leste
-					numberSW = numeracao + 19; //Sudoeste
-					numberS = numeracao + 20; //Sul
-					numberSE = numeracao + 21; //Sudeste
-					break;
-			}
+			numberNW = numeracao - (columns + 1); //Noroeste
+			numberN = numeracao - columns; //Norte
+			numberNE = numeracao - (columns - 1); //Nordeste
+			numberW = numeracao - 1; //Oeste
+			numberE = numeracao + 1; //Leste
+			numberSW = numeracao + (columns - 1); //Sudoeste
+			numberS = numeracao + columns; //Sul
+			numberSE = numeracao + (columns + 1); //Sudeste
 	 		
 			//Concatenação
 			campoN = "campo" + numberN;
@@ -298,208 +268,68 @@ namespace campo_minado
 			campoNW = "campo" + numberNW;
 			
 			//Exceções (caso o campo selecionado esteja na borda)
-			switch(columns)
+			if(numeracao % columns == 0 && numeracao < columns)
 			{
-				//Fácil
-				case 10:
-					if(numeracao % 10 == 0 && numeracao < 10)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 10 == 0 && numeracao > 89)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 10 == 9 && numeracao > 89)
-					{
-						campoSW = "";
-						campoNE = "";
-						campoE = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 10 == 9 && numeracao < 10)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-						campoE = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 10 == 0)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-					}
-					
-					else if(numeracao < 10)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 10 == 9)
-					{
-						campoSE = "";
-						campoNE = "";
-						campoE = "";
-					}
-					
-					else if(numeracao > 89)
-					{
-						campoSW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					break;
-				
-				//Médio
-				case 15:
-					if(numeracao % 15 == 0 && numeracao < 15)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 15 == 0 && numeracao > 209)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 15 == 14 && numeracao > 209)
-					{
-						campoSW = "";
-						campoNE = "";
-						campoE = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 15 == 14 && numeracao < 15)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-						campoE = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 15 == 0)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-					}
-					
-					else if(numeracao < 15)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 15 == 14)
-					{
-						campoSE = "";
-						campoNE = "";
-						campoE = "";
-					}
-					
-					else if(numeracao > 209)
-					{
-						campoSW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					break;
-				
-				//Difícil
-				case 20:
-					if(numeracao % 20 == 0 && numeracao < 20)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 20 == 0 && numeracao > 379)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 20 == 19 && numeracao > 379)
-					{
-						campoSW = "";
-						campoNE = "";
-						campoE = "";
-						campoS = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 20 == 19 && numeracao < 20)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-						campoE = "";
-						campoSE = "";
-					}
-					
-					else if(numeracao % 20 == 0)
-					{
-						campoSW = "";
-						campoNW = "";
-						campoW = "";
-					}
-					
-					else if(numeracao < 20)
-					{
-						campoNW = "";
-						campoN = "";
-						campoNE = "";
-					}
-					
-					else if(numeracao % 20 == 19)
-					{
-						campoSE = "";
-						campoNE = "";
-						campoE = "";
-					}
-					
-					else if(numeracao > 379)
-					{
-						campoSW = "";
-						campoS = "";
-						campoSE = "";
-					}
-					break;
+				campoSW = "";
+				campoNW = "";
+				campoW = "";
+				campoN = "";
+				campoNE = "";
+			}
+			
+			else if(numeracao % columns == 0 && numeracao > (columns * lines) - (columns - 1))
+			{
+				campoSW = "";
+				campoNW = "";
+				campoW = "";
+				campoS = "";
+				campoSE = "";
+			}
+			
+			else if(numeracao % columns == (columns - 1) && numeracao > (columns * lines) - (columns - 1))
+			{
+				campoSW = "";
+				campoNE = "";
+				campoE = "";
+				campoS = "";
+				campoSE = "";
+			}
+			
+			else if(numeracao % columns == (columns - 1) && numeracao < columns)
+			{
+				campoNW = "";
+				campoN = "";
+				campoNE = "";
+				campoE = "";
+				campoSE = "";
+			}
+			
+			else if(numeracao % columns == 0)
+			{
+				campoSW = "";
+				campoNW = "";
+				campoW = "";
+			}
+			
+			else if(numeracao < columns)
+			{
+				campoNW = "";
+				campoN = "";
+				campoNE = "";
+			}
+			
+			else if(numeracao % columns == (columns - 1))
+			{
+				campoSE = "";
+				campoNE = "";
+				campoE = "";
+			}
+			
+			else if(numeracao > (columns * lines) - (columns - 1))
+			{
+				campoSW = "";
+				campoS = "";
+				campoSE = "";
 			}
 			
 			//Guardar valores no vetor string "campos"
