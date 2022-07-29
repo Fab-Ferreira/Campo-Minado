@@ -40,7 +40,7 @@ namespace campo_minado
 			painel.Parent = this; //Inserir um Panel na tela
 			painel.Size = new Size(Width, Height); //Definir tamanho
 			
-			campoClasse.EasyMode(painel); //Chamar o método EasyMode
+			campoClasse.Dificuldades(painel, sender); //Chamar o método Dificuldades
 		}
 		
 		//Click do modo médio
@@ -53,7 +53,7 @@ namespace campo_minado
 			painel.Parent = this; //Inserir um Panel na tela
 			painel.Size = new Size(Width, Height); //Definir tamanho
 			
-			campoClasse.MediumMode(painel); //Chamar o método MediumMode
+			campoClasse.Dificuldades(painel, sender); //Chamar o método Dificuldades
 		}
 		
 		//Click do modo difícil
@@ -66,7 +66,7 @@ namespace campo_minado
 			painel.Parent = this; //Inserir um Panel na tela
 			painel.Size = new Size(Width, Height); //Definir tamanho
 			
-			campoClasse.HardMode(painel); //Chamar o método HardMode
+			campoClasse.Dificuldades(painel, sender); //Chamar o método Dificuldades
 		}
 		
 		//Botão de Reiniciar
