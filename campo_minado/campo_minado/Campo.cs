@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,7 +12,7 @@ namespace campo_minado
 		
 		//Variáveis int
 		public int[] bombas;
-		public int columns, lines, quantidade, numL, numC, LocationX, LocationY, numeracao, valorQuant, variavel, i, flags, free;
+		public int columns, lines, quantidade, numL, numC, LocationX, LocationY, numeracao, valorQuant, variavel, i, flags, free, numCampos, numBombas;
 		public int numberN, numberNE, numberE, numberSE, numberS, numberSW, numberW, numberNW;
 		
 		//Variáveis string
@@ -60,27 +60,49 @@ namespace campo_minado
 			}
 		}
 		
-		//Modo fácil
-		public void EasyMode(Panel painel)
+		//Dificuldades
+		public void Dificuldades(Panel painel, object sender)
 		{
+			//Clear
 			i = 0;
 			free = 0;
 			variavel = 0;
-			columns = 10;
-			lines = 10;
-			flags = 20;
 			
-			//Criar um vetor de 100 legendas (10x10)
-			quantCampos = new Label[columns * lines];
+			//Identificar qual botão foi clicado
+			switch ((sender as Button).Name)
+			{
+				case "easy":
+					columns = 10;
+					lines = 10;
+					numBombas = 20;
+					flags = 20;
+					break;
+					
+				case "medium":
+					columns = 15;
+					lines = 15;
+					numBombas = 45;
+					flags = 45;
+					break;
+					
+				case "hard":
+					columns = 20;
+					lines = 20;
+					numBombas = 80;
+					flags = 80;
+					break;
+			}
 			
+			numCampos = columns * lines; //Definir número de campos
+			quantCampos = new Label[numCampos]; //Definir o tamanho do vetor do número de campos
+
 			Caracteristica(painel); //Chamar o método Caracteristica
 			
-			bombas = new int[20];
+			bombas = new int[numBombas]; //Definir o tamanho do vetor do número de bombas
 			
-			//Definir os campos que serão bombas
-			while(i < 20)
+			while (i < numBombas)
 			{
-				bombas[i] = rand.Next(0, 100); //Sortear aleatoriamente entre 0 à 99
+				bombas[i] = rand.Next(0, numCampos); //Sortear aleatoriamente entre 0 à 99
 				repetido = false;
 				
 				for(int rndm = 0; rndm < i; rndm++)
@@ -100,120 +122,10 @@ namespace campo_minado
 				}
 			}
 			
-			quantFreeCampos = new Label[80];
+			quantFreeCampos = new Label[numCampos - numBombas]; //Definir o tamanho do vetor do número de campos seguros
 			
 			//Guardar quais são os campos seguros
-			while(variavel < 100)
-			{
-				if(quantCampos[variavel].Text != "Bomb") //Se for um campo seguro
-				{
-					quantFreeCampos[free] = quantCampos[variavel];
-					free++;
-				}
-				
-				variavel++;
-			}
-		}
-		
-		//Modo médio
-		public void MediumMode(Panel painel)
-		{
-			i = 0;
-			free = 0;
-			variavel = 0;
-			columns = 15;
-			lines = 15;
-			flags = 50;
-			
-			//Criar um vetor de 225 legendas (15x15)
-			quantCampos = new Label[columns * lines];
-			
-			Caracteristica(painel); //Chamar o método Caracteristica
-			
-			bombas = new int[50];
-			
-			//Definir os campos que serão bombas
-			while(i < 50)
-			{
-				bombas[i] = rand.Next(0, 225); //Sortear aleatoriamente entre 0 à 224
-				repetido = false;
-				
-				for(int rndm = 0; rndm < i; rndm++)
-				{
-					//Se o número já foi sorteado
-					if(bombas[rndm] == bombas[i])
-					{
-						repetido = true;
-					}
-				}
-				
-				//Se não foi sorteado antes
-				if(repetido == false)
-				{
-					quantCampos[bombas[i]].Text = "Bomb"; //Definir texto para "Bomb"
-					i++;
-				}
-			}
-			
-			quantFreeCampos = new Label[175];
-			
-			//Guardar quais são os campos seguros
-			while(variavel < 225)
-			{
-				if(quantCampos[variavel].Text != "Bomb") //Se for um campo seguro
-				{
-					quantFreeCampos[free] = quantCampos[variavel];
-					free++;
-				}
-				
-				variavel++;
-			}
-		}
-		
-		//Modo difícil
-		public void HardMode(Panel painel)
-		{
-			i = 0;
-			free = 0;
-			variavel = 0;
-			columns = 20;
-			lines = 20;
-			flags = 100;
-			
-			//Criar um vetor de 400 legendas (20x20)
-			quantCampos = new Label[columns * lines];
-			
-			Caracteristica(painel); //Chamar o método Caracteristica
-			
-			bombas = new int[100];
-			
-			//Definir os campos que serão bombas
-			while(i < 100)
-			{
-				bombas[i] = rand.Next(0, 400); //Sortear aleatoriamente entre 0 à 399
-				repetido = false;
-				
-				for(int rndm = 0; rndm < i; rndm++)
-				{
-					//Se o número já foi sorteado
-					if(bombas[rndm] == bombas[i])
-					{
-						repetido = true;
-					}
-				}
-				
-				//Se não foi sorteado antes
-				if(repetido == false)
-				{
-					quantCampos[bombas[i]].Text = "Bomb"; //Definir texto para "Bomb"
-					i++;
-				}
-			}
-			
-			quantFreeCampos = new Label[300];
-			
-			//Guardar quais são os campos seguros
-			while(variavel < 400)
+			while(variavel < numCampos)
 			{
 				if(quantCampos[variavel].Text != "Bomb") //Se for um campo seguro
 				{
@@ -226,13 +138,13 @@ namespace campo_minado
 		}
 		
 		//IdentificarBotoes
-		public void IdentificarBotoes(object sender, EventArgs e)
+		public void IdentificarBotoes(object sender)
 		{
 			//Definir tamanho dos vetores
 			campos = new string[8];
 			possiveisBomb = new Label[8];
 			
-			for(int i = 0; i < 8; i++)
+			for(i = 0; i < 8; i++)
 			{
 				possiveisBomb[i] = new Label();
 			}
@@ -441,7 +353,7 @@ namespace campo_minado
 				}
 				
 				(sender as Label).MouseDown -= Tentativa; //Remover método do MouseDown
-				IdentificarBotoes(sender, e); //Chamar o método IdentificarBotoes
+				IdentificarBotoes(sender); //Chamar o método IdentificarBotoes
 				(sender as Label).BackColor = Color.White; //Colorir o fundo da label para branco
 				
 				//Identificar se todos os campos seguros estão marcados
@@ -499,6 +411,7 @@ namespace campo_minado
 					
 						flags--;
 					}
+					
 					//Se ultrapassou
 					else
 					{
